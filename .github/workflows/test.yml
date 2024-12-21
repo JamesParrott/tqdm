@@ -52,9 +52,9 @@ jobs:
     steps:
     - uses: actions/checkout@v4
       with: {fetch-depth: 0}
-    - name: Install uv
+    - name: Install uv # https://docs.astral.sh/uv/guides/integration/github/#installation
       uses: astral-sh/setup-uv@v4
-    - name: install tox (with uv tool install)
+    - name: install tox & tox-gh-actions (with uv tool install)
       run: |
         uv tool install --python ${{ matrix.python }} --with tox-gh-actions tox
         mkdir -p "$HOME/bin"
