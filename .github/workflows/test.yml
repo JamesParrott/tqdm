@@ -56,9 +56,11 @@ jobs:
       uses: astral-sh/setup-uv@v4
     - name: Set up a Python venv with UV
       run: uv venv --python ${{ matrix.python }}
+    - name: Activate Python venv with UV
+      run: source .venv/bin/activate
     - name: install
       run: |
-        uv pip install -U tox tox-gh-actions
+        uv pip install tox tox-gh-actions
         mkdir -p "$HOME/bin"
         curl -sfL https://coverage.codacy.com/get.sh > "$HOME/bin/codacy"
         chmod +x "$HOME/bin/codacy"
