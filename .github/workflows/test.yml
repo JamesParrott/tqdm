@@ -52,7 +52,7 @@ jobs:
     steps:
     - uses: actions/checkout@v4
       with: {fetch-depth: 0}
-    - uses: actions/setup-python@v5
+    - uses: LizardByte/setup-python-action@381f9c338e0aedf001928bf790d789d031e144e5
       with:
         python-version: ${{ matrix.python }}
     - name: install
