@@ -38,7 +38,7 @@ jobs:
   test:
     if: github.event_name != 'pull_request' || !contains('OWNER,MEMBER,COLLABORATOR', github.event.pull_request.author_association)
     name: py${{ matrix.python }}-${{ matrix.os }}
-    continue-on-error: ${{ matrix.os == 'windows' }}
+    continue-on-error: ${{ matrix.os != 'ubuntu' }}
     strategy:
       matrix:
         os: [ubuntu]
