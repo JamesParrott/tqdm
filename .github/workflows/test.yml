@@ -52,12 +52,13 @@ jobs:
     steps:
     - uses: actions/checkout@v4
       with: {fetch-depth: 0}
-    - uses: actions/setup-python@v5
-      with:
-        python-version: ${{ matrix.python }}
+    - name: Install uv
+      uses: astral-sh/setup-uv@v4
+    - name: Set up Python
+      run: uv python install ${{ matrix.python }}
     - name: install
       run: |
-        pip install -U tox tox-gh-actions
+        uv pip install -U tox tox-gh-actions
         mkdir -p "$HOME/bin"
         curl -sfL https://coverage.codacy.com/get.sh > "$HOME/bin/codacy"
         chmod +x "$HOME/bin/codacy"
